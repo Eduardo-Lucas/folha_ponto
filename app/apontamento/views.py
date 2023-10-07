@@ -10,12 +10,11 @@ def apontamento_list(request, login_url="users:login"):
 
 
 def folha_ponto(request):
-    usuario_id = 64  # jair
     data_inicial = "2023-09-01"
-    data_final = "2023-09-21"
+    data_final = "2023-09-30"
 
     service = PontoService()
 
-    response = service.ponto_list(usuario_id, data_inicial, data_final)
+    pontos = service.ponto_list(data_inicial, data_final)
 
-    return render(request, "apontamento/folha-ponto.html", {"response": response})
+    return render(request, "apontamento/folha-ponto.html", {"pontos": pontos})
