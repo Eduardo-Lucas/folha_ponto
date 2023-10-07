@@ -1,24 +1,38 @@
 {% extends "base.html" %} {% block content %}
 
 <h1>Folha Ponto</h1>
-<table class="table">
+<!DOCTYPE html>
+
+<table class="table table-striped">
   <thead>
-    <tr>
-      <th scope="col">Usuário</th>
-      <th scope="col">Dia</th>
-      <th scope="col">Hora Entrada</th>
-      <th scope="col">Hora Saída</th>
-    </tr>
+    <tr></tr>
   </thead>
   <tbody>
-    {% for ponto in pontos %}
     <tr>
-      <td>{{ponto.usuario_id}}</td>
-      <td>{{ponto.entrada.date|date:"d/m/Y"}}</td>
-      <td>{{ponto.entrada.time|time:"H:i"}}</td>
-      <td>{{ponto.saida.time}}</td>
+      <td>Usuário: {{nome|capfirst}} </td>
     </tr>
-    {% endfor %}
+    <tr>
+      <td colspan="4">
+        <table class="table mb-0">
+          <thead>
+            <tr>
+              <th>Dia</th>
+              <th>Entrada</th>
+              <th>Saída</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for ponto in pontos %}
+            <tr>
+              <td>{{ponto.entrada.date|date:"d/m/Y"}}</td>
+              <td>{{ponto.entrada.time|time:"H:i"}}</td>
+              <td>{{ponto.saida.time}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </td>
+    </tr>
   </tbody>
 </table>
 
