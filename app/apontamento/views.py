@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from apontamento.services import PontoService
+from apontamento.forms import FolhaPontoForm
+from apontamento.models import Ponto
 
 
 @login_required
@@ -10,19 +12,19 @@ def apontamento_list(request, login_url="users:login"):
 
 
 def folha_ponto(request):
-    usuario_id = 6
-    data_inicial = "2023-09-01"
-    data_final = "2023-09-30"
+    form = FolhaPontoForm(request.POST or None)
+    context = {"pontos": {}, "form": form, "nome": ""}
+    if request.method == "POST":
+        service = PontoService()
+        pontos = service.ponto_list(form["usuario_id"], form["entrada"], form["saida"])
 
-    service = PontoService()
-
-    usuario = User.objects.get(id=usuario_id)
-    nome = usuario.username
-
-    pontos = service.ponto_list(usuario_id, data_inicial, data_final)
+        usuario = User.objects.get(id=form["usuario_id"])
+        nome = usuario.username
+    else:
+        form = FolhaPontoForm()
 
     return render(
         request,
         "apontamento/folha-ponto.html",
-        {"pontos": pontos, "nome": nome},
+        context,
     )

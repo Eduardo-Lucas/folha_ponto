@@ -1,8 +1,18 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} {% load static %} 
+
+{%block content %}
 
 <h1>Folha Ponto</h1>
-<!DOCTYPE html>
 
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %} 
+  
+  {% form.as_p() %}
+
+  <input type="submit" value="Consultar" />
+</form>
+
+{% if pontos %}
 <table class="table table-striped">
   <thead>
     <tr></tr>
@@ -35,5 +45,6 @@
     </tr>
   </tbody>
 </table>
+{% endif%}
 
 {% endblock %}

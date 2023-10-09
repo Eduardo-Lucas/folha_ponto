@@ -2,6 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% load django_bootstrap5 %} 
+    {% bootstrap_css %} 
+    
+    {{ form.media }}
+    {% bootstrap_messages %} 
+    {% load crispy_forms_tags %}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="/static/smart-selects/admin/js/chainedfk.js"></script>
+    <script src="/static/smart-selects/admin/js/bindfields.js"></script>
+
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -68,8 +80,11 @@
       </div>
     </header>-->
     <!-- Section-->
-    {% block content %} {% endblock %}
-
+    <div class="container mt-5">
+          {% block content %} 
+          
+          {% endblock %}
+    </div>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

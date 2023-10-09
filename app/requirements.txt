@@ -1,4 +1,8 @@
-Django==4.2.3
-psycopg2-binary==2.9.6
+crispy-bootstrap5==0.7
+Django==4.1.7
 django-import-export==3.3.1
 django-jazzmin==2.6.0
+django-bootstrap5==23.1
+django-crispy-forms==2.0
+psycopg2-binary==2.9.6
+django-smart-selects==1.6.0
