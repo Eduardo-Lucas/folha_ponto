@@ -1,18 +1,13 @@
 from django import forms
+from django.contrib.auth.models import User
 from apontamento.models import Ponto
 
 
 class DateInput(forms.DateInput):
     input_type = "date"
-    format = "dd/MM/yyyy"
 
 
-class FolhaPontoForm(forms.ModelForm):
-    class Meta:
-        model = Ponto
-        fields = ("usuario_id", "entrada", "saida")
-
-        widgets = {
-            "entrada": forms.DateInput(),
-            "saida": forms.DateInput(),
-        }
+class FolhaPontoForm(forms.Form):
+    usuario = forms.ModelChoiceField(queryset=User.objects.all().order_by("username"))
+    entrada = forms.DateField(widget=DateInput)
+    saida = forms.DateField(widget=DateInput)
