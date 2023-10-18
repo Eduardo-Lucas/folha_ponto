@@ -13,13 +13,15 @@ def apontamento_list(request, login_url="users:login"):
 
 def folha_ponto(request):
     form = FolhaPontoForm(request.POST or None)
-    context = {"pontos": {}, "form": form, "nome": ""}
+    context = {"pontos": [], "form": form, "nome": ""}
     if request.method == "POST":
+        usuario = User.objects.filter(username=form["usuario"]).first()
         service = PontoService()
-        pontos = service.ponto_list(form["usuario_id"], form["entrada"], form["saida"])
+        pontos = service.ponto_list(usuario.id, form["entrada"], form["saida"])
 
-        usuario = User.objects.get(id=form["usuario_id"])
         nome = usuario.username
+        context = {"pontos": pontos, "form": form, "nome": nome}
+
     else:
         form = FolhaPontoForm()
 

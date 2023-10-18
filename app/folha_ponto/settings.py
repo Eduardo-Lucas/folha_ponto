@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     "django_bootstrap5",
     "smart_selects",
     "import_export",
-    
+    "fontawesomefree",
 ]
 
 USE_DJANGO_JQUERY = True

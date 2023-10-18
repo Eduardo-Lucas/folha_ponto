@@ -6,3 +6,4 @@ django-bootstrap5==23.1
 django-crispy-forms==2.0
 psycopg2-binary==2.9.6
 django-smart-selects==1.6.0
+fontawesomefree==6.0
