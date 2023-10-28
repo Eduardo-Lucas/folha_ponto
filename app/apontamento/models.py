@@ -22,11 +22,3 @@ class Ponto(models.Model):
 
     def __str__(self) -> str:
         return f"{self.usuario_id} {self.entrada} {self.saida}"
-
-    @property
-    def data_entrada(self):
-        return self.entrada.date()
-
-    @property
-    def data_saida(self):
-        return self.saida.date()

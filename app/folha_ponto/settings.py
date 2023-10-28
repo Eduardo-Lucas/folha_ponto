@@ -102,7 +102,7 @@ DATABASES = {
 }
 
 DATE_INPUT_FORMATS = [
-    "%d%m%Y",
+    "%d/%m/%Y",
 ]
 
 # Password validation
@@ -142,6 +142,9 @@ USE_L10N = False
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = "/static/"
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")

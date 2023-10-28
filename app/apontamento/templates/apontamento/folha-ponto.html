@@ -1,6 +1,5 @@
 {% extends "base.html" %} {% load crispy_forms_tags %} {% load static %} 
 
-
 {%block content %}
 <div class="container border border-dark">
   <h1>Folha Ponto</h1>
@@ -14,10 +13,20 @@
       <div class="col-md-4">{{form.usuario|as_crispy_field}}</div>
     </div>
     <div class="text-center mb-3">
-      <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-primary"><i class="fa-solid fa-search"></i> Consulta</button>
-          <button type="button" class="btn btn-warning"><i class="fa-solid fa-file-excel"></i> Exportar</button>
-          <button type="button" class="btn btn-primary"><i class="fa-solid fa-arrows-rotate"></i> Limpar</button>
+      <div
+        class="btn-group btn-group-lg"
+        role="group"
+        aria-label="Basic example"
+      >
+        <button type="submit" class="btn btn-primary">
+          <i class="fa-solid fa-search"></i> Consulta
+        </button>
+        <button type="button" class="btn btn-warning">
+          <i class="fa-solid fa-file-excel"></i> Exportar
+        </button>
+        <button type="button" class="btn btn-primary">
+          <i class="fa-solid fa-arrows-rotate"></i> Limpar
+        </button>
       </div>
     </div>
   </form>
@@ -29,7 +38,6 @@
       <tr></tr>
     </thead>
     <tbody>
-      
       <tr>
         <td colspan="4">
           <table class="table mb-0">

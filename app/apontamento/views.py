@@ -5,6 +5,8 @@ from apontamento.services import PontoService
 from apontamento.forms import FolhaPontoForm
 from apontamento.models import Ponto
 
+from datetime import datetime
+
 
 @login_required
 def apontamento_list(request, login_url="users:login"):
@@ -15,9 +17,14 @@ def folha_ponto(request):
     form = FolhaPontoForm(request.POST or None)
     context = {"pontos": [], "form": form, "nome": ""}
     if request.method == "POST":
-        usuario = User.objects.filter(username=form["usuario"]).first()
+        print("NOME USUARIO: ", form["usuario"])
+        usuario = User.objects.filter(username="sara").first()
         service = PontoService()
-        pontos = service.ponto_list(usuario.id, form["entrada"], form["saida"])
+        pontos = service.ponto_list(
+            usuario.id,
+            data_inicial=datetime(2023, 9, 1, 0, 0, 0).date(),
+            data_final=datetime(2023, 9, 1, 0, 0, 0).date(),
+        )
 
         nome = usuario.username
         context = {"pontos": pontos, "form": form, "nome": nome}
