@@ -1,0 +1,12 @@
+version: "3.3"
+services:
+  web-folha:
+    build: .
+    entrypoint: "" 
+    command: 
+      - /bin/bash 
+      - -c
+      - |
+        pip install debugpy
+        python -m debugpy --listen 0.0.0.0:5676 manage.py runserver 0.0.0.0:8000
+  

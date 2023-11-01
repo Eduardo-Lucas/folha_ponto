@@ -20,5 +20,12 @@ class Ponto(models.Model):
     class Meta:
         ordering = ("entrada",)
 
+    
+    @property
+    def difference(self):
+        if self.saida is not None:
+            return self.saida - self.entrada
+        return 0
+        
     def __str__(self) -> str:
-        return f"{self.usuario_id} {self.entrada} {self.saida}"
+        return f"{self.usuario_id} {self.entrada} {self.saida} {self.difference}"
